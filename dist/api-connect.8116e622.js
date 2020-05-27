@@ -124,14 +124,14 @@ function easyHTTP() {
 
 
 easyHTTP.prototype.get = function (url, callback) {
-  this.http.open('GET', url, true);
+  this.http.open("GET", url, true);
   var self = this;
 
   this.http.onload = function () {
     if (self.http.status === 200) {
       callback(null, self.http.responseText);
     } else {
-      callback('Error:' + self.http.status);
+      callback("Error:" + self.http.status);
     }
   };
 
@@ -165,7 +165,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57387" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

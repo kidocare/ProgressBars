@@ -118,99 +118,83 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"js/script.js":[function(require,module,exports) {
-// import "bootstrap";
-// document.getElementById('btn-1').addEventListener('click', progressBar);
 window.onload = function () {
-  // const jokesNumbers = document.querySelector('input[type="number"]').value;
   xhr = new XMLHttpRequest();
-  xhr.open('GET', "http://pb-api.herokuapp.com/bars", true);
+  xhr.open("GET", "http://pb-api.herokuapp.com/bars", true);
 
   xhr.onload = function () {
     if (this.status === 200) {
       var progressNum = JSON.parse(this.responseText);
       var limit = progressNum.limit;
       console.log(limit);
-      var btnBar = '';
+      var btnBar = "";
       progressNum.buttons.forEach(function (element, index) {
         btnBar += "<button type=\"button\" class=\"btn btn-secondary\" id=\"btn-".concat(index, "\" onclick=\"addToBar(").concat(element, " , ").concat(limit, ")\">").concat(element, "</button>");
         console.log(btnBar);
       });
-      document.getElementById('btn-ctr').innerHTML = btnBar;
-      console.log(progressNum); // document.getElementById('btn-1').textContent = progressNum.buttons[0];
-      // document.getElementById('btn-2').textContent = progressNum.buttons[1];
-      // document.getElementById('btn-3').textContent = progressNum.buttons[2];
-      // document.getElementById('bar-1').style.width = progressNum.bars[0] * 10 + 'px';
-      // document.getElementById('bar-2').style.width = progressNum.bars[1] * 10 + 'px';
-      // document.getElementById('bar-3').style.width = progressNum.bars[2] * 10 + 'px';
-      // document.getElementById('bar-1').textContent = progressNum.bars[0] ;
-      // document.getElementById('bar-2').textContent = progressNum.bars[1] ;
-      // document.getElementById('bar-3').textContent = progressNum.bars[2] ;
-
-      var prBar = '';
+      document.getElementById("btn-ctr").innerHTML = btnBar;
+      console.log(progressNum);
+      var prBar = "";
       progressNum.bars.forEach(function (element, index) {
         prBar += "<div class=\"row my-3 \">\n                <div class=\"col-12 d-flex justify-content-center\" >\n                    <div class=\"progress\" style=\"height: 40px;width:".concat(limit, "px;\" >\n                        <div  aria-valuenow=\"").concat(element, "\" aria-valuemin=\"0\" aria-valuemax=\"").concat(limit, "\" id=\"").concat(element, "\" role=\"progressbar\"  \n                        class=\"progress-bar bg-info progress-bar-striped progress-bar-animated\" style=\"width:").concat(element / limit * 100, "%;\" >").concat(element, "</div>\n                    </div>\n                </div>\n            </div>");
       });
-      document.getElementById('proBar').innerHTML = prBar;
-      var selBar = '';
+      document.getElementById("proBar").innerHTML = prBar;
+      var selBar = "";
       var selBarMain = "\t\n            <select onchange= \"barSelect(value)\"  id=\"select-ctr\" class=\"form-control pr-5 mr-3\" ></select>\n            ";
-      document.getElementById('select-main-ctr').innerHTML = selBarMain;
+      document.getElementById("select-main-ctr").innerHTML = selBarMain;
       progressNum.bars.forEach(function (elem, index) {
         selBar += "<option   id=\"sel".concat(elem, "\" data=\"").concat(elem, "\" value = \"").concat(elem, "\" >Bar ").concat(index + 1, "</option>");
       });
-      document.getElementById('select-ctr').innerHTML = selBar;
-      var checkedBar = document.querySelectorAll('.progress-bar');
-      checkedBar[0].classList.add('active'); // const output = `
-      // `;
-      // document.getElementById('buttons').innerHTML = output;
-      // console.log(progressNum);
+      document.getElementById("select-ctr").innerHTML = selBar;
+      var checkedBar = document.querySelectorAll(".progress-bar");
+      checkedBar[0].classList.add("active");
     }
   };
 
   xhr.send();
   var addToBar;
   var barSelect;
-}; // document.getElementById('bar-1').focus(); 
-
+};
 
 barSelect = function barSelect(value) {
-  var el = document.querySelectorAll('.progress-bar');
+  var el = document.querySelectorAll(".progress-bar");
   console.log(el);
   el.forEach(function (elem) {
-    if (elem.classList.contains('active')) {
-      elem.classList.remove('active');
+    if (elem.classList.contains("active")) {
+      elem.classList.remove("active");
     }
 
-    document.getElementById(value).classList.add('active');
+    document.getElementById(value).classList.add("active");
   });
 };
 
 addToBar = function addToBar(params, limit) {
   //  document.querySelector('.active').style.width = + params +'%' ;.
-  var barWidth = document.querySelector('.active').textContent;
+  var barWidth = document.querySelector(".active").textContent;
   barWidth = parseInt(barWidth);
 
   if (barWidth >= 0) {
     barWidth += params;
-    document.querySelector('.active').textContent = barWidth;
-    document.querySelector('.active').style.width = barWidth / limit * 100 + '%';
+    document.querySelector(".active").textContent = barWidth;
+    document.querySelector(".active").style.width = barWidth / limit * 100 + "%";
   }
 
   if (barWidth < 0) {
-    document.querySelector('.active').textContent = 0;
+    document.querySelector(".active").textContent = 0;
   }
 
   if (barWidth > limit) {
-    document.querySelector('.active').classList.remove('bg-info');
-    document.querySelector('.active').classList.add('bg-danger');
+    document.querySelector(".active").classList.remove("bg-info");
+    document.querySelector(".active").classList.add("bg-danger");
   }
 
   if (barWidth <= limit) {
-    document.querySelector('.active').classList.remove('bg-danger');
-    document.querySelector('.active').classList.add('bg-info');
+    document.querySelector(".active").classList.remove("bg-danger");
+    document.querySelector(".active").classList.add("bg-info");
   }
 
   if (barWidth <= 0) {
-    document.querySelector('.active').style.width = 5 + '%';
+    document.querySelector(".active").style.width = 5 + "%";
   }
 
   console.log(limit);
@@ -244,7 +228,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57387" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63094" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
