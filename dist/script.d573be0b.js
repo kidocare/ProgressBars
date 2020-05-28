@@ -157,8 +157,8 @@ window.onload = function () {
 };
 
 barSelect = function barSelect(value) {
-  var el = document.querySelectorAll(".progress-bar");
-  console.log(el);
+  var el = document.querySelectorAll(".progress-bar"); // console.log(el);
+
   el.forEach(function (elem) {
     if (elem.classList.contains("active")) {
       elem.classList.remove("active");
@@ -166,10 +166,10 @@ barSelect = function barSelect(value) {
 
     document.getElementById(value).classList.add("active");
   });
+  return elem;
 };
 
 addToBar = function addToBar(params, limit) {
-  //  document.querySelector('.active').style.width = + params +'%' ;.
   var barWidth = document.querySelector(".active").textContent;
   barWidth = parseInt(barWidth);
 
@@ -197,6 +197,7 @@ addToBar = function addToBar(params, limit) {
     document.querySelector(".active").style.width = 5 + "%";
   }
 
+  return barWidth;
   console.log(limit);
   console.log(params);
 };
@@ -228,7 +229,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63094" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58140" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

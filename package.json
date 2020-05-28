@@ -3,18 +3,24 @@
   "version": "1.0.0",
   "description": "This is a progress bar the control with API and Styled with bootstrap",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx mocha \"src/**/*.test.js\" --recursive --require @babel/register",
     "start": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html"
   },
   "author": "Morton Nari",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.10.0",
+    "@babel/preset-env": "^7.10.0",
+    "@babel/register": "^7.9.0",
     "bootstrap": "^4.4.1",
+    "chai": "^4.2.0",
     "jquery": "^3.5.0",
+    "jsdom": "16.2.2",
+    "jsdom-global": "3.0.2",
+    "mocha": "^7.2.0",
     "parcel-bundler": "^1.12.4",
     "popper.js": "^1.16.1",
     "sass": "^1.26.3"
-    
   }
 }

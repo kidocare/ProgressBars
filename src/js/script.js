@@ -40,28 +40,27 @@ window.onload = function () {
       });
       document.getElementById("select-ctr").innerHTML = selBar;
 
-      var checkedBar = document.querySelectorAll(".progress-bar");
+      let checkedBar = document.querySelectorAll(".progress-bar");
       checkedBar[0].classList.add("active");
     }
   };
   xhr.send();
-  var addToBar;
-  var barSelect;
+  let addToBar;
+  let barSelect;
 };
 barSelect = (value) => {
-  var el = document.querySelectorAll(".progress-bar");
+  let el = document.querySelectorAll(".progress-bar");
 
-  console.log(el);
-  el.forEach(function (elem) {
+  // console.log(el);
+  el.forEach((elem) => {
     if (elem.classList.contains("active")) {
       elem.classList.remove("active");
     }
     document.getElementById(value).classList.add("active");
   });
+  return elem;
 };
-
 addToBar = (params, limit) => {
-  //  document.querySelector('.active').style.width = + params +'%' ;.
   let barWidth = document.querySelector(".active").textContent;
   barWidth = parseInt(barWidth);
 
@@ -85,7 +84,7 @@ addToBar = (params, limit) => {
   if (barWidth <= 0) {
     document.querySelector(".active").style.width = 5 + "%";
   }
-
+  return barWidth;
   console.log(limit);
 
   console.log(params);
